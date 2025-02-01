@@ -1,0 +1,48 @@
+
+html, body {
+    width: 100%;
+    overflow-x: hidden; /* Completely disables horizontal scrolling */
+}
+
+
+.bgImg {
+    background-image: url('https://insanelygoodrecipes.com/wp-content/uploads/2020/07/Cup-Of-Creamy-Coffee.png'); 
+    background-size: cover;  
+    background-position: center; 
+    background-repeat: no-repeat; 
+    width: 100vw;  
+    min-height: 50vh; /* Allows flexibility if content grows */
+}
+
+.container {
+    width: 100vw;  
+    height: 90vh; /* Fixed height based on viewport height */
+    overflow-y: auto; /* Enables vertical scrolling */
+    overflow-x: hidden; /* Prevents horizontal scrolling */
+    padding: 10px; /* Adds spacing inside */
+    box-sizing: border-box; /* Prevents content from overflowing */
+}
+
+h1 {
+    color: white;
+    margin-bottom: 20px;
+}
+
+.community-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.community-list a {
+    display: block;
+    background: #007BFF;
+    color: white;
+    text-decoration: none;
+    padding: 12px;
+    border-radius: 5px;
+}
+
+.community-list a:hover {
+    background: #0056b3;
+}
