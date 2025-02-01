@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login or Signup</title>
+    <title>Login</title>
     <link rel="stylesheet" href="PageTemplate.css">
+    <script defer src="login.js"></script>
 </head>
 <body>
     <header>
@@ -19,11 +20,35 @@
             <div class="icon"></div>
         </div>
     </header>
+
     <nav>
         <a href="Main.html">Back to Home</a>
     </nav>
+
+    <main>
+        <section class="login-container">
+            <h2>Login</h2>
+            <form id="login-form">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required placeholder="Enter your username">
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required placeholder="Enter your password">
+
+                <div class="remember-me">
+                    <input type="checkbox" id="remember" name="remember">
+                    <label for="remember">Remember me</label>
+                </div>
+
+                <button type="submit">Login</button>
+                <p>Don't have an account? <a href="register.html">Sign up here</a></p>
+            </form>
+        </section>
+    </main>
+
     <footer>
-        <p>placeholder</p>
+        <p>&copy; 2025 Forum Web App</p>
     </footer>
 </body>
 </html>
+

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="PageTemplate.css">
+    <script defer src="register.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo">L</div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search...">
+            <button>Search</button>
+        </div>
+        <div class="icons">
+            <div class="icon"></div>
+            <div class="icon"></div>
+            <div class="icon"></div>
+        </div>
+    </header>
+
+    <nav>
+        <a href="Main.html">Back to Home</a>
+    </nav>
+
+    <main>
+        <section class="register-container">
+            <h2>Register</h2>
+            <form id="register-form">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required placeholder="Enter your username">
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required placeholder="Enter a strong password">
+                
+                <div class="show-password">
+                    <input type="checkbox" id="show-password">
+                    <label for="show-password">Show Password</label>
+                </div>
+
+                <button type="submit">Register</button>
+                <p>Already have an account? <a href="login.html">Log in here</a></p>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Forum Web App</p>
+    </footer>
+</body>
+</html>
