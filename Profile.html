@@ -5,6 +5,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
     <link rel="stylesheet" href="PageTemplate.css">
+    <link rel="stylesheet" href="Home.css">
+    <style>
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px;
+            background: #1f1f1f;
+            border-radius: 10px;
+            max-width: 800px;
+            margin: 20px auto;
+        }
+        .profile-pic {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+        }
+        .profile-info h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .profile-info p {
+            margin: 0;
+            color: #bbb;
+        }
+        .profile-navigation {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 10px;
+            background: #222;
+            border-radius: 10px;
+            margin: 20px auto;
+            max-width: 800px;
+            flex-wrap: wrap;
+        }
+        .nav-btn {
+            padding: 10px 15px;
+            background: #444;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .nav-btn:hover {
+            background: #666;
+        }
+        .content-container {
+            margin: 20px auto;
+            max-width: 800px;
+            padding: 20px;
+            background: #1f1f1f;
+            border-radius: 10px;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -22,8 +78,52 @@
     <nav>
         <a href="Main.html">Back to Home</a>
     </nav>
+    
+    <div class="container">
+        <div class="profile-header">
+            <img src="profile-placeholder.png" alt="Profile Picture" class="profile-pic">
+            <div class="profile-info">
+                <h1>Archer_User</h1>
+                <p>u/Archer_User</p>
+            </div>
+        </div>
+        
+        <div class="profile-navigation">
+            <button class="nav-btn" onclick="loadContent('overview.html')">Overview</button>
+            <button class="nav-btn" onclick="loadContent('posts.html')">Posts</button>
+            <button class="nav-btn" onclick="loadContent('comments.html')">Comments</button>
+            <button class="nav-btn" onclick="loadContent('saved.html')">Saved</button>
+            <button class="nav-btn" onclick="loadContent('hidden.html')">Hidden</button>
+            <button class="nav-btn" onclick="loadContent('likes.html')">Likes</button>
+            <button class="nav-btn" onclick="loadContent('dislikes.html')">Dislikes</button>
+        </div>
+        
+        <div class="content-container" id="profile-content">
+            <p>Select a section to view.</p>
+        </div>
+    </div>
+    
     <footer>
         <p>placeholder</p>
     </footer>
+    
+    <script>
+        function loadContent(page) {
+            console.log("Loading:", page); 
+    
+            fetch(page)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    console.log("Loaded content:", data); 
+                    document.getElementById('profile-content').innerHTML = data;
+                })
+                .catch(error => console.error("Error loading content:", error));
+        }
+    </script>    
 </body>
 </html>

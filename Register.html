@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="PageTemplate.css">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: #1f1f1f;
+            color: white;
+        }
+
+        .register-container {
+            background: #222;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            width: 350px;
+            text-align: center;
+        }
+
+        .register-container h2 {
+            margin-bottom: 15px;
+        }
+
+        .register-container input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: none;
+            background: #333;
+            color: white;
+        }
+
+        .register-container input::placeholder {
+            color: #bbb;
+        }
+
+        .show-password {
+            display: flex;
+            align-items: center;
+            gap: 6px; 
+            font-size: 14px;
+            justify-content: flex-start;
+            margin-top: 8px;
+            color: white;
+        }
+
+        .show-password input {
+            width: 16px;
+            height: 16px;
+            accent-color: #4aa3ff;
+            cursor: pointer;
+        }
+
+        .password-warning {
+            color: #ff4747;
+            font-size: 14px;
+            display: none;
+            margin-bottom: 10px;
+        }
+
+        .register-container button {
+            width: 100%;
+            padding: 12px;
+            background: #444;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .register-container button:hover {
+            background: #666;
+        }
+
+        .register-container p {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .register-container a {
+            color: #4aa3ff;
+            text-decoration: none;
+        }
+
+        .register-container a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">L</div>
+    </header>
+
+    <main>
+        <section class="register-container">
+            <h2>Register</h2>
+            <form id="register-form">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required placeholder="Enter your username">
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required placeholder="Enter a strong password">
+
+                <label for="confirm-password">Confirm Password:</label>
+                <input type="password" id="confirm-password" name="confirm-password" required placeholder="Re-enter your password">
+                
+                <p class="password-warning" id="password-warning">⚠ Passwords do not match</p>
+
+                <div class="show-password">
+                    <input type="checkbox" id="show-password">
+                    <label for="show-password">Show Password</label>
+                </div>
+
+                <button type="submit" disabled id="register-btn">Register</button>
+                <p>Already have an account? <a href="login.html">Log in here</a></p>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Forum Web App</p>
+    </footer>
+
+    <script>
+        document.getElementById('show-password').addEventListener('change', function () {
+            let passwordField = document.getElementById('password');
+            let confirmPasswordField = document.getElementById('confirm-password');
+            let type = this.checked ? 'text' : 'password';
+            passwordField.type = type;
+            confirmPasswordField.type = type;
+        });
+
+        document.getElementById('register-form').addEventListener('input', function () {
+            let password = document.getElementById('password').value;
+            let confirmPassword = document.getElementById('confirm-password').value;
+            let warning = document.getElementById('password-warning');
+            let registerBtn = document.getElementById('register-btn');
+
+            if (password.length > 0 && confirmPassword.length > 0) {
+                if (password !== confirmPassword) {
+                    warning.style.display = 'block';
+                    registerBtn.disabled = true;
+                } else {
+                    warning.style.display = 'none';
+                    registerBtn.disabled = false;
+                }
+            } else {
+                warning.style.display = 'none';
+                registerBtn.disabled = true;
+            }
+        });
+    </script>
+</body>
+</html>
