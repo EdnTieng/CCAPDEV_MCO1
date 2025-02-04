@@ -3,27 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login or Signup</title>
+    <title>Login</title>
     <link rel="stylesheet" href="PageTemplate.css">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: #1f1f1f;
+            color: white;
+        }
+
+        .login-container {
+            background: #222;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            width: 350px;
+            text-align: center;
+        }
+
+        .login-container h2 {
+            margin-bottom: 15px;
+        }
+
+        .login-container input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: none;
+            background: #333;
+            color: white;
+        }
+
+        .login-container input::placeholder {
+            color: #bbb;
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 8px; 
+            font-size: 14px;
+            justify-content: flex-start;
+            margin-top: 8px;
+            color: white;
+        }
+
+        .remember-me input {
+            width: 16px;
+            height: 16px;
+            accent-color: #4aa3ff; 
+            cursor: pointer;
+        }
+
+        .login-container button {
+            width: 100%;
+            padding: 12px;
+            background: #444;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .login-container button:hover {
+            background: #666;
+        }
+
+        .login-container p {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .login-container a {
+            color: #4aa3ff;
+            text-decoration: none;
+        }
+
+        .login-container a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
     <header>
         <div class="logo">L</div>
-        <div class="search-bar">
-            <input type="text" placeholder="Search...">
-            <button>Search</button>
-        </div>
-        <div class="icons">
-            <div class="icon"></div>
-            <div class="icon"></div>
-            <div class="icon"></div>
-        </div>
     </header>
-    <nav>
-        <a href="Main.html">Back to Home</a>
-    </nav>
+
+    <main>
+        <section class="login-container">
+            <h2>Login</h2>
+            <form id="login-form">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required placeholder="Enter your username">
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required placeholder="Enter your password">
+
+                <div class="remember-me">
+                    <input type="checkbox" id="remember" name="remember">
+                    <label for="remember">Remember me</label>
+                </div>
+
+                <button type="submit">Login</button>
+                <p>Don't have an account? <a href="register.html">Sign up here</a></p>
+            </form>
+        </section>
+    </main>
+
     <footer>
-        <p>placeholder</p>
+        <p>&copy; 2025 Forum Web App</p>
     </footer>
 </body>
 </html>
