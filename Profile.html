@@ -5,13 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
     <link rel="stylesheet" href="PageTemplate.css">
-<<<<<<< Updated upstream
-=======
     <link rel="stylesheet" href="Home.css">
     <link rel="stylesheet" href="Profile.css">
     <script src="https://kit.fontawesome.com/2616052655.js" crossorigin="anonymous"></script>
 
->>>>>>> Stashed changes
 </head>
 <body>
     <header>
@@ -37,8 +34,51 @@
     <nav>
         <a href="Main.html">Back to Home</a>
     </nav>
+    <div class="container">
+        <div class="profile-header">
+            <img src="profile-placeholder.png" alt="Profile Picture" class="profile-pic">
+            <div class="profile-info">
+                <h1>Archer_User</h1>
+                <p>u/Archer_User</p>
+            </div>
+        </div>
+        
+        <div class="profile-navigation">
+            <button class="nav-btn" onclick="loadContent('overview.html')">Overview</button>
+            <button class="nav-btn" onclick="loadContent('posts.html')">Posts</button>
+            <button class="nav-btn" onclick="loadContent('comments.html')">Comments</button>
+            <button class="nav-btn" onclick="loadContent('saved.html')">Saved</button>
+            <button class="nav-btn" onclick="loadContent('hidden.html')">Hidden</button>
+            <button class="nav-btn" onclick="loadContent('likes.html')">Likes</button>
+            <button class="nav-btn" onclick="loadContent('dislikes.html')">Dislikes</button>
+        </div>
+        
+        <div class="content-container" id="profile-content">
+            <p>Select a section to view.</p>
+        </div>
+    </div>
+    
     <footer>
         <p>placeholder</p>
     </footer>
+    
+    <script>
+        function loadContent(page) {
+            console.log("Loading:", page); 
+    
+            fetch(page)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    console.log("Loaded content:", data); 
+                    document.getElementById('profile-content').innerHTML = data;
+                })
+                .catch(error => console.error("Error loading content:", error));
+        }
+    </script>    
 </body>
 </html>
