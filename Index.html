@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CCAPDEV MCO1</title>
+    <link rel="stylesheet" href="PageTemplate.css">
+    <link rel="stylesheet" href="Home.css">
+    <link rel="stylesheet" href="posttemplate.css">
+    <script src="https://kit.fontawesome.com/2616052655.js" crossorigin="anonymous"></script>
+
+    <script>
+        function toggleLike(type, id) {
+            let likeBtn = document.getElementById(`like-btn-${type}-${id}`);
+            let dislikeBtn = document.getElementById(`dislike-btn-${type}-${id}`);
+
+            if (likeBtn.classList.contains("active")) {
+                likeBtn.classList.remove("active");
+                likeBtn.style.background = "#444";  
+            } else {
+                likeBtn.classList.add("active");
+                likeBtn.style.background = "#007BFF"; 
+                dislikeBtn.classList.remove("active");
+                dislikeBtn.style.background = "#444"; 
+            }
+        }
+
+        function toggleDislike(type, id) {
+            let dislikeBtn = document.getElementById(`dislike-btn-${type}-${id}`);
+            let likeBtn = document.getElementById(`like-btn-${type}-${id}`);
+
+            if (dislikeBtn.classList.contains("active")) {
+                dislikeBtn.classList.remove("active");
+                dislikeBtn.style.background = "#444"; 
+            } else {
+                dislikeBtn.classList.add("active");
+                dislikeBtn.style.background = "#FF3B30"; 
+                likeBtn.classList.remove("active");
+                likeBtn.style.background = "#444"; 
+            }
+        }
+
+        function toggleComments(postId) {
+            var commentSection = document.getElementById(`comments-${postId}`);
+            if (commentSection) {
+                commentSection.style.display = (commentSection.style.display === "none" || commentSection.style.display === "") 
+                    ? "block" 
+                    : "none";
+            } else {
+                console.error("Comment section not found for post:", postId);
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.jpg" alt="Logo">
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search...">
+            <button>Search</button>
+        </div>
+        <div class="icons">
+            <button class="icon-btn" id="create-post-btn">
+                <i class="fa-solid fa-plus fa-2x"></i>
+            </button>
+            <button class="icon-btn" id="profile-btn">
+                <i class="fa-solid fa-user fa-2x"></i>
+            </button>
+            <button class="icon-btn" id="menu-btn">
+                <i class="fa-solid fa-bars fa-2x"></i>
+            </button>
+        </div>
+        
+        <div id="menu-dropdown" class="menu-dropdown">
+            <ul>
+                <li><a href="#">Settings</a></li>
+                <li><a href="#">Privacy</a></li>
+                <li><a href="#">Help & Support</a></li>
+                <li><a href="#">Log Out</a></li>
+            </ul>
+        </div>        
+    </header>
+
+    <div id="explore-content"></div>
+    <nav>
+        <a href="Index.html">Home</a>
+        <a href="Login.html">Login</a>
+        <a href="Explore.html">Explore</a>
+    </nav>
+
+    <div class="body-container">
+        <div class="left-block">
+            <h1>Find Your Community!</h1>
+            <div class="community-list">
+                <a href="#">Landscapes</a>
+                <a href="#">Food</a>
+                <a href="#">Artwork</a>
+                <a href="#">Travel</a>
+                <a href="#">Animals</a>
+            </div>   
+        </div>
+
+        <div class="middle-block">
+
+            <div class="post-feed">
+                <h2>Recent Posts</h2>
+
+                <div class="post-item">
+                    <div class="post-header">
+                        <div class="user-icon"></div>
+                        <span class="username">User1</span>
+                    </div>
+                    <div class="post-caption">
+                        <p>Enjoying the weekend! </p>
+                    </div>
+                    <div class="post-content">
+                        <img src="https://www.goodfreephotos.com/albums/italy/other-italy/beautiful-landscape-with-mountains-and-lakes-with-sky-in-italy.jpg" alt="Post image">
+                    </div>
+                    <div class="post-actions" style="display: flex; justify-content: space-around; padding: 10px;">
+                        <button id="like-btn-post-1" onclick="toggleLike('post', 1)"
+                            style="display: flex; align-items: center; gap: 5px; background: #444; 
+                            color: white; border: none; padding: 8px 15px; border-radius: 8px; 
+                            cursor: pointer; transition: 0.3s; font-size: 14px;">
+                            👍 Like
+                        </button>
+                    
+                        <button id="dislike-btn-post-1" onclick="toggleDislike('post', 1)"
+                            style="display: flex; align-items: center; gap: 5px; background: #444; 
+                            color: white; border: none; padding: 8px 15px; border-radius: 8px; 
+                            cursor: pointer; transition: 0.3s; font-size: 14px;">
+                            👎 Dislike
+                        </button>
+                    
+                        <button id="comment-btn-1" onclick="toggleComments(1)"
+                            style="display: flex; align-items: center; gap: 5px; background: #444; 
+                            color: white; border: none; padding: 8px 15px; border-radius: 8px; 
+                            cursor: pointer; transition: 0.3s; font-size: 14px;">
+                            💬 Comment
+                        </button>
+                    </div>
+                </div>
+                    <div class="comments-section" id="comments-1" style="display: none;">
+                        <div class="add-comment">
+                            <textarea placeholder="Add a comment..."></textarea>
+                            <button>Post Comment</button>
+                        </div>
+
+                         <div class="comment-item">
+                            <div class="comment-header">
+                                <div class="user-icon"></div>
+                                <span class="username">UserA</span>
+                            </div>
+                            <div class="comment-content">Looks awesome! </div>
+                            <div class="comment-actions">
+                                <button>Like</button>
+                                <button>Unlike</button>
+                                <button>Reply</button>
+                            </div>
+                        </div>
+
+                        <div class="comment-item">
+                            <div class="comment-header">
+                                <div class="user-icon"></div>
+                                <span class="username">UserB</span>
+                            </div>
+                            <div class="comment-content">Wish I was there too! </div>
+                            <div class="comment-actions">
+                                <button>Like</button>
+                                <button>Unlike</button>
+                                <button>Reply</button>
+                            </div>
+                        </div>
+
+                        <div class="comment-item">
+                            <div class="comment-header">
+                                <div class="user-icon"></div>
+                                <span class="username">UserC</span>
+                            </div>
+                            <div class="comment-content">What a beautiful view! </div>
+                            <div class="comment-actions">
+                                <button>Like</button>
+                                <button>Unlike</button>
+                                <button>Reply</button>
+                            </div>
+                        </div>
+
+                        <div class="comment-item">
+                            <div class="comment-header">
+                                <div class="user-icon"></div>
+                                <span class="username">UserD</span>
+                            </div>
+                            <div class="comment-content">Hope you're having fun! </div>
+                            <div class="comment-actions">
+                                <button>Like</button>
+                                <button>Unlike</button>
+                                <button>Reply</button>
+                            </div>
+                        </div>
+
+                        <div class="comment-item">
+                            <div class="comment-header">
+                                <div class="user-icon"></div>
+                                <span class="username">UserE</span>
+                            </div>
+                            <div class="comment-content">Amazing shot! </div>
+                            <div class="comment-actions">
+                                <button>Like</button>
+                                <button>Unlike</button>
+                                <button>Reply</button>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+
+                <div class="post-item">
+                    <div class="post-header">
+                        <div class="user-icon"></div>
+                        <span class="username">User2</span>
+                    </div>
+                    <div class="post-caption">
+                        <p>Had a great time at the concert! </p>
+                    </div>
+                    <div class="post-content">
+                        <img src="https://s3.amazonaws.com/thumbnails.thecrimson.com/photos/2023/10/16/202430_1365891.jpg.1333x1000_q95_crop-smart_upscale.jpg" alt="Post image">
+                    </div>
+                    <div class="post-actions" style="display: flex; justify-content: space-around; padding: 10px;">
+                        <button id="like-btn-post-2" onclick="toggleLike('post', 2)"
+                            style="display: flex; align-items: center; gap: 5px; background: #444; 
+                            color: white; border: none; padding: 8px 15px; border-radius: 8px; 
+                            cursor: pointer; transition: 0.3s; font-size: 14px;">
+                            👍 Like
+                        </button>
+                    
+                        <button id="dislike-btn-post-2" onclick="toggleDislike('post', 2)"
+                            style="display: flex; align-items: center; gap: 5px; background: #444; 
+                            color: white; border: none; padding: 8px 15px; border-radius: 8px; 
+                            cursor: pointer; transition: 0.3s; font-size: 14px;">
+                            👎 Dislike
+                        </button>
+                    
+                        <button id="comment-btn-2" onclick="toggleComments(2)"
+                            style="display: flex; align-items: center; gap: 5px; background: #444; 
+                            color: white; border: none; padding: 8px 15px; border-radius: 8px; 
+                            cursor: pointer; transition: 0.3s; font-size: 14px;">
+                            💬 Comment
+                        </button>
+                    </div>
+                    <div class="comments-section" id="comments-2" style="display: none;">
+                        <div class="add-comment">
+                            <textarea placeholder="Add a comment..."></textarea>
+                            <button>Post Comment</button>
+                        </div>
+
+                         <div class="comment-item">
+                            <div class="comment-header">
+                                <div class="user-icon"></div>
+                                <span class="username">UserA</span>
+                            </div>
+                            <div class="comment-content"> WOW!</div>
+                            <div class="comment-actions">
+                                <button>Like</button>
+                                <button>Unlike</button>
+                                <button>Reply</button>
+                            </div>
+                        </div>
+
+                        <div class="comment-item">
+                            <div class="comment-header">
+                                <div class="user-icon"></div>
+                                <span class="username">UserB</span>
+                            </div>
+                            <div class="comment-content">Wish I was there too! </div>
+                            <div class="comment-actions">
+                                <button>Like</button>
+                                <button>Unlike</button>
+                                <button>Reply</button>
+                            </div>
+                        </div>
+
+                        <div class="comment-item">
+                            <div class="comment-header">
+                                <div class="user-icon"></div>
+                                <span class="username">UserC</span>
+                            </div>
+                            <div class="comment-content"> My favorite! </div>
+                            <div class="comment-actions">
+                                <button>Like</button>
+                                <button>Unlike</button>
+                                <button>Reply</button>
+                            </div>
+                        </div>
+
+                        <div class="comment-item">
+                            <div class="comment-header">
+                                <div class="user-icon"></div>
+                                <span class="username">UserD</span>
+                            </div>
+                            <div class="comment-content"> Taylor Swift!</div>
+                            <div class="comment-actions">
+                                <button>Like</button>
+                                <button>Unlike</button>
+                                <button>Reply</button>
+                            </div>
+                        </div>
+
+                        <div class="comment-item">
+                            <div class="comment-header">
+                                <div class="user-icon"></div>
+                                <span class="username">UserE</span>
+                            </div>
+                            <div class="comment-content"> OMG!</div>
+                            <div class="comment-actions">
+                                <button>Like</button>
+                                <button>Unlike</button>
+                                <button>Reply</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="post-item">
+                    <div class="post-header">
+                        <div class="user-icon"></div>
+                        <span class="username">User3</span>
+                    </div>
+                    <div class="post-caption">
+                        <p>Check out my latest artwork! 🎨</p>
+                    </div>
+                    <div class="post-content">
+                        <img src="https://4.bp.blogspot.com/-RVxY1N7R9jc/WMars21_ngI/AAAAAAAACKw/rnPg2lOKJrArdMH8pU8nQL8qec4rtq0NwCKgB/s1600/IMG_1689.JPG" alt="Post image">
+                    </div>
+                    <div class="post-actions" style="display: flex; justify-content: space-around; padding: 10px;">
+                        <button id="like-btn-post-3" onclick="toggleLike('post', 3)"
+                            style="display: flex; align-items: center; gap: 5px; background: #444; 
+                            color: white; border: none; padding: 8px 15px; border-radius: 8px; 
+                            cursor: pointer; transition: 0.3s; font-size: 14px;">
+                            👍 Like
+                        </button>
+                    
+                        <button id="dislike-btn-post-3" onclick="toggleDislike('post', 3)"
+                            style="display: flex; align-items: center; gap: 5px; background: #444; 
+                            color: white; border: none; padding: 8px 15px; border-radius: 8px; 
+                            cursor: pointer; transition: 0.3s; font-size: 14px;">
+                            👎 Dislike
+                        </button>
+                    
+                        <button id="comment-btn-3" onclick="toggleComments(3)"
+                            style="display: flex; align-items: center; gap: 5px; background: #444; 
+                            color: white; border: none; padding: 8px 15px; border-radius: 8px; 
+                            cursor: pointer; transition: 0.3s; font-size: 14px;">
+                            💬 Comment
+                        </button>
+                    </div>
+                    <div class="comments-section" id="comments-3" style="display: none;">
+                        <div class="add-comment">
+                            <textarea placeholder="Add a comment..."></textarea>
+                            <button>Post Comment</button>
+                        </div>
+
+                         <div class="comment-item">
+                            <div class="comment-header">
+                                <div class="user-icon"></div>
+                                <span class="username">UserA</span>
+                            </div>
+                            <div class="comment-content"> What an artist!</div>
+                            <div class="comment-actions">
+                                <button>Like</button>
+                                <button>Unlike</button>
+                                <button>Reply</button>
+                            </div>
+                        </div>
+
+                        <div class="comment-item">
+                            <div class="comment-header">
+                                <div class="user-icon"></div>
+                                <span class="username">UserB</span>
+                            </div>
+                            <div class="comment-content"> You're going places! </div>
+                            <div class="comment-actions">
+                                <button>Like</button>
+                                <button>Unlike</button>
+                                <button>Reply</button>
+                            </div>
+                        </div>
+
+                        <div class="comment-item">
+                            <div class="comment-header">
+                                <div class="user-icon"></div>
+                                <span class="username">UserC</span>
+                            </div>
+                            <div class="comment-content"> Amazing!</div>
+                            <div class="comment-actions">
+                                <button>Like</button>
+                                <button>Unlike</button>
+                                <button>Reply</button>
+                            </div>
+                        </div>
+
+                        <div class="comment-item">
+                            <div class="comment-header">
+                                <div class="user-icon"></div>
+                                <span class="username">UserD</span>
+                            </div>
+                            <div class="comment-content"> Beautiful work! </div>
+                            <div class="comment-actions">
+                                <button>Like</button>
+                                <button>Unlike</button>
+                                <button>Reply</button>
+                            </div>
+                        </div>
+
+                        <div class="comment-item">
+                            <div class="comment-header">
+                                <div class="user-icon"></div>
+                                <span class="username">UserE</span>
+                            </div>
+                            <div class="comment-content"> Sold! </div>
+                            <div class="comment-actions">
+                                <button>Like</button>
+                                <button>Unlike</button>
+                                <button>Reply</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="post-item">
+                    <div class="post-header">
+                        <div class="user-icon"></div>
+                        <span class="username">User4</span>
+                    </div>
+                    <div class="post-caption">
+                        <p> Had fun going out today! </p>
+                    </div>
+                    <div class="post-content">
+                        <img src="https://www.tripsavvy.com/thmb/5KcnVJUSTXGgqOlL6oYFvvZruhw=/2048x1358/filters:no_upscale():max_bytes(150000):strip_icc()/adventureland-5aafd0ec8023b90036bef773.jpg" alt="Post image">
+                    </div>
+                    <div class="post-actions" style="display: flex; justify-content: space-around; padding: 10px;">
+                        <button id="like-btn-post-4" onclick="toggleLike('post', 4)"
+                            style="display: flex; align-items: center; gap: 5px; background: #444; 
+                            color: white; border: none; padding: 8px 15px; border-radius: 8px; 
+                            cursor: pointer; transition: 0.3s; font-size: 14px;">
+                            👍 Like
+                        </button>
+                    
+                        <button id="dislike-btn-post-4" onclick="toggleDislike('post', 4)"
+                            style="display: flex; align-items: center; gap: 5px; background: #444; 
+                            color: white; border: none; padding: 8px 15px; border-radius: 8px; 
+                            cursor: pointer; transition: 0.3s; font-size: 14px;">
+                            👎 Dislike
+                        </button>
+                    
+                        <button id="comment-btn-4" onclick="toggleComments(4)"
+                            style="display: flex; align-items: center; gap: 5px; background: #444; 
+                            color: white; border: none; padding: 8px 15px; border-radius: 8px; 
+                            cursor: pointer; transition: 0.3s; font-size: 14px;">
+                            💬 Comment
+                        </button>
+                    </div>
+                    <div class="comments-section" id="comments-4" style="display: none;">
+                        <div class="add-comment">
+                            <textarea placeholder="Add a comment..."></textarea>
+                            <button>Post Comment</button>
+                        </div>
+
+                         <div class="comment-item">
+                            <div class="comment-header">
+                                <div class="user-icon"></div>
+                                <span class="username">UserA</span>
+                            </div>
+                            <div class="comment-content"> Where is that? </div>
+                            <div class="comment-actions">
+                                <button>Like</button>
+                                <button>Unlike</button>
+                                <button>Reply</button>
+                            </div>
+                        </div>
+
+                        <div class="comment-item">
+                            <div class="comment-header">
+                                <div class="user-icon"></div>
+                                <span class="username">UserB</span>
+                            </div>
+                            <div class="comment-content"> On My Way! </div>
+                            <div class="comment-actions">
+                                <button>Like</button>
+                                <button>Unlike</button>
+                                <button>Reply</button>
+                            </div>
+                        </div>
+
+                        <div class="comment-item">
+                            <div class="comment-header">
+                                <div class="user-icon"></div>
+                                <span class="username">UserC</span>
+                            </div>
+                            <div class="comment-content"> Roller Coaster! </div>
+                            <div class="comment-actions">
+                                <button>Like</button>
+                                <button>Unlike</button>
+                                <button>Reply</button>
+                            </div>
+                        </div>
+
+                        <div class="comment-item">
+                            <div class="comment-header">
+                                <div class="user-icon"></div>
+                                <span class="username">UserD</span>
+                            </div>
+                            <div class="comment-content">Have fun!! </div>
+                            <div class="comment-actions">
+                                <button>Like</button>
+                                <button>Unlike</button>
+                                <button>Reply</button>
+                            </div>
+                        </div>
+
+                        <div class="comment-item">
+                            <div class="comment-header">
+                                <div class="user-icon"></div>
+                                <span class="username">UserE</span>
+                            </div>
+                            <div class="comment-content"> Can I Join? </div>
+                            <div class="comment-actions">
+                                <button>Like</button>
+                                <button>Unlike</button>
+                                <button>Reply</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="post-item">
+                    <div class="post-header">
+                        <div class="user-icon"></div>
+                        <span class="username">User5</span>
+                    </div>
+                    <div class="post-caption">
+                        <p>Love this new recipe! </p>
+                    </div>
+                    <div class="post-content">
+                        <img src="https://www.diningandcooking.com/wp-content/uploads/2015/08/01/Pasta-With-Tomatoes-Capers-Olives-and-Breadcrumbs.jpg" alt="Post image">
+                    </div>
+                    <div class="post-actions" style="display: flex; justify-content: space-around; padding: 10px;">
+                        <button id="like-btn-post-5" onclick="toggleLike('post', 5)"
+                            style="display: flex; align-items: center; gap: 5px; background: #444; 
+                            color: white; border: none; padding: 8px 15px; border-radius: 8px; 
+                            cursor: pointer; transition: 0.3s; font-size: 14px;">
+                            👍 Like
+                        </button>
+                    
+                        <button id="dislike-btn-post-5" onclick="toggleDislike('post', 5)"
+                            style="display: flex; align-items: center; gap: 5px; background: #444; 
+                            color: white; border: none; padding: 8px 15px; border-radius: 8px; 
+                            cursor: pointer; transition: 0.3s; font-size: 14px;">
+                            👎 Dislike
+                        </button>
+                    
+                        <button id="comment-btn-5" onclick="toggleComments(5)"
+                            style="display: flex; align-items: center; gap: 5px; background: #444; 
+                            color: white; border: none; padding: 8px 15px; border-radius: 8px; 
+                            cursor: pointer; transition: 0.3s; font-size: 14px;">
+                            💬 Comment
+                        </button>
+                    </div>
+                    <div class="comments-section" id="comments-5" style="display: none;">
+                        <div class="add-comment">
+                            <textarea placeholder="Add a comment..."></textarea>
+                            <button>Post Comment</button>
+                        </div>
+
+                         <div class="comment-item">
+                            <div class="comment-header">
+                                <div class="user-icon"></div>
+                                <span class="username">UserA</span>
+                            </div>
+                            <div class="comment-content">Looks Yummy!</div>
+                            <div class="comment-actions">
+                                <button>Like</button>
+                                <button>Unlike</button>
+                                <button>Reply</button>
+                            </div>
+                        </div>
+
+                        <div class="comment-item">
+                            <div class="comment-header">
+                                <div class="user-icon"></div>
+                                <span class="username">UserB</span>
+                            </div>
+                            <div class="comment-content"> can I have some? </div>
+                            <div class="comment-actions">
+                                <button>Like</button>
+                                <button>Unlike</button>
+                                <button>Reply</button>
+                            </div>
+                        </div>
+
+                        <div class="comment-item">
+                            <div class="comment-header">
+                                <div class="user-icon"></div>
+                                <span class="username">UserC</span>
+                            </div>
+                            <div class="comment-content"> Looks Expensive! </div>
+                            <div class="comment-actions">
+                                <button>Like</button>
+                                <button>Unlike</button>
+                                <button>Reply</button>
+                            </div>
+                        </div>
+
+                        <div class="comment-item">
+                            <div class="comment-header">
+                                <div class="user-icon"></div>
+                                <span class="username">UserD</span>
+                            </div>
+                            <div class="comment-content"> One To Go Please ! </div>
+                            <div class="comment-actions">
+                                <button>Like</button>
+                                <button>Unlike</button>
+                                <button>Reply</button>
+                            </div>
+                        </div>
+
+                        <div class="comment-item">
+                            <div class="comment-header">
+                                <div class="user-icon"></div>
+                                <span class="username">UserE</span>
+                            </div>
+                            <div class="comment-content"> Yummy food! </div>
+                            <div class="comment-actions">
+                                <button>Like</button>
+                                <button>Unlike</button>
+                                <button>Reply</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- Create Post Modal -->
+        <div id="create-post-modal" class="modal">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                 <h2>Create a Post</h2>
+                    <span class="close">&times;</span>
+                </div>
+
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <div class="modal-profile">
+                        <img src="profile-placeholder.png" alt="Profile Picture">
+                        <span>Archer_User</span>
+                    </div>
+                    <textarea placeholder="What's on your mind?"></textarea>
+
+                    <!-- Emoji Picker -->
+                    <div class="emoji-picker">
+                        <span onclick="addEmoji('😀')">😀</span>
+                        <span onclick="addEmoji('❤️')">❤️</span>
+                        <span onclick="addEmoji('😂')">😂</span>
+                        <span onclick="addEmoji('😢')">😢</span>
+                        <span onclick="addEmoji('😡')">😡</span>
+                    </div>
+
+                    <!-- Post Button -->
+                    <button class="post-btn">Post</button>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+            let createPostBtn = document.getElementById("create-post-btn");
+            let modal = document.getElementById("create-post-modal");
+            let closeBtn = document.querySelector(".close");
+
+            modal.style.display = "none";
+
+            if (createPostBtn && modal) {
+                createPostBtn.addEventListener("click", function () {
+                    modal.style.display = "flex";
+                });
+            }
+
+            if (closeBtn) {
+                closeBtn.addEventListener("click", function () {
+                    modal.style.display = "none";
+                });
+            }
+
+            window.addEventListener("click", function (event) {
+                if (event.target === modal) {
+                    modal.style.display = "none";
+                }
+            });
+        });
+
+        /* Emoji Picker Function */
+        function addEmoji(emoji) {
+            let textarea = document.querySelector(".modal-body textarea");
+            textarea.value += emoji;
+        }
+        function loadPage(page) {
+            fetch(page)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("main-content").innerHTML = data;
+                })
+                .catch(error => console.log("Error loading page:", error));
+        }
+        </script>
+
+    <footer>
+        <p>© 2025 TikTalk Archers</p>
+    </footer>
+
+    <script>
+        document.getElementById("profile-btn").addEventListener("click", function() {
+            window.location.href = "profile.html"; // Redirect to profile page
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+        let menuBtn = document.getElementById("menu-btn");
+        let menuDropdown = document.getElementById("menu-dropdown");
+
+        menuBtn.addEventListener("click", function (event) {
+            event.stopPropagation(); 
+            menuDropdown.style.display = menuDropdown.style.display === "block" ? "none" : "block";
+        });
+
+        document.addEventListener("click", function (event) {
+            if (!menuDropdown.contains(event.target) && event.target !== menuBtn) {
+                menuDropdown.style.display = "none";
+            }
+        });
+    });
+    </script>
+</body>
+</html> 

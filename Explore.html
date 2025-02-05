@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore - CCAPDEV MCO1</title>
+    <link rel="stylesheet" href="PageTemplate.css">
+    <link rel="stylesheet" href="Home.css">
+    <link rel="stylesheet" href="PostTemplate.css">
+    <script src="https://kit.fontawesome.com/2616052655.js" crossorigin="anonymous"></script>
+    <script>
+        function toggleLike(type, id) {
+            let likeBtn = document.getElementById(`like-btn-${type}-${id}`);
+            let dislikeBtn = document.getElementById(`dislike-btn-${type}-${id}`);
+
+            if (likeBtn.classList.contains("active")) {
+                likeBtn.classList.remove("active");
+                likeBtn.style.background = "#444";  
+            } else {
+                likeBtn.classList.add("active");
+                likeBtn.style.background = "#007BFF"; 
+                dislikeBtn.classList.remove("active");
+                dislikeBtn.style.background = "#444"; 
+            }
+        }
+
+        function toggleDislike(type, id) {
+            let dislikeBtn = document.getElementById(`dislike-btn-${type}-${id}`);
+            let likeBtn = document.getElementById(`like-btn-${type}-${id}`);
+
+            if (dislikeBtn.classList.contains("active")) {
+                dislikeBtn.classList.remove("active");
+                dislikeBtn.style.background = "#444"; 
+            } else {
+                dislikeBtn.classList.add("active");
+                dislikeBtn.style.background = "#FF3B30"; 
+                likeBtn.classList.remove("active");
+                likeBtn.style.background = "#444"; 
+            }
+        }
+
+        function toggleComments(postId) {
+            var commentSection = document.getElementById(`comments-${postId}`);
+            if (commentSection.style.display === "none" || commentSection.style.display === "") {
+                commentSection.style.display = "block";
+            } else {
+                commentSection.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.jpg" alt="Logo">
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search...">
+            <button>Search</button>
+        </div>
+        <div class="icons">
+            <button class="icon-btn" id="create-post-btn">
+                <i class="fa-solid fa-plus fa-2x"></i>
+            </button>
+            <button class="icon-btn" id="profile-btn">
+                <i class="fa-solid fa-user fa-2x"></i>
+            </button>
+            <button class="icon-btn" id="menu-btn">
+                <i class="fa-solid fa-bars fa-2x"></i>
+            </button>
+        </div>
+    </header>
+
+    <nav>
+        <a href="Index.html">Home</a>
+        <a href="Login.html">Login</a>
+        <a href="Explore.html">Explore</a>
+    </nav>
+
+    <div class="body-container">
+        <div class="left-block">
+            <h1>Find Your Community!</h1>
+            <div class="community-list">
+                <a href="#">Landscapes</a>
+                <a href="#">Food</a>
+                <a href="#">Artwork</a>
+                <a href="#">Travel</a>
+                <a href="#">Animals</a>
+            </div>
+        </div>
+
+        <div class="middle-block">
+            <h2>Explore New Posts</h2>
+
+            <div class="post-feed">
+                <div class="post-item">
+                    <div class="post-header">
+                        <div class="user-icon"></div>
+                        <span class="username">Explorer1</span>
+                    </div>
+                    <div class="post-caption">
+                        <p>Check out this amazing sunset! 🌅</p>
+                    </div>
+                    <div class="post-content">
+                        <img src="sunset.jpg" alt="Sunset">
+                    </div>
+                    <div class="post-actions" style="display: flex; justify-content: space-around; padding: 10px;">
+                        <button id="like-btn-post-1" onclick="toggleLike('post', 1)"
+                            style="display: flex; align-items: center; gap: 5px; background: #444; 
+                            color: white; border: none; padding: 8px 15px; border-radius: 8px; 
+                            cursor: pointer; transition: 0.3s; font-size: 14px;">
+                            👍 Like
+                        </button>
+                    
+                        <button id="dislike-btn-post-1" onclick="toggleDislike('post', 1)"
+                            style="display: flex; align-items: center; gap: 5px; background: #444; 
+                            color: white; border: none; padding: 8px 15px; border-radius: 8px; 
+                            cursor: pointer; transition: 0.3s; font-size: 14px;">
+                            👎 Dislike
+                        </button>
+                    
+                        <button id="dislike-btn-comment-1" onclick="toggleDislike('comment', 1)"
+                            style="display: flex; align-items: center; gap: 5px; background: #444; 
+                            color: white; border: none; padding: 8px 15px; border-radius: 8px; 
+                            cursor: pointer; transition: 0.3s; font-size: 14px;">
+                            💬 Comment
+                        </button>
+                    </div>
+                </div>
+
+                <div class="post-item">
+                    <div class="post-header">
+                        <div class="user-icon"></div>
+                        <span class="username">Explorer2</span>
+                    </div>
+                    <div class="post-caption">
+                        <p>Delicious homemade sushi 🍣</p>
+                    </div>
+                    <div class="post-content">
+                        <img src="sushi.jpg" alt="Sushi">
+                    </div>
+                    <div class="post-actions" style="display: flex; justify-content: space-around; padding: 10px;">
+                        <button id="like-btn-post-2" onclick="toggleLike('post', 2)"
+                            style="display: flex; align-items: center; gap: 5px; background: #444; 
+                            color: white; border: none; padding: 8px 15px; border-radius: 8px; 
+                            cursor: pointer; transition: 0.3s; font-size: 14px;">
+                            👍 Like
+                        </button>
+                    
+                        <button id="dislike-btn-post-2" onclick="toggleDislike('post', 2)"
+                            style="display: flex; align-items: center; gap: 5px; background: #444; 
+                            color: white; border: none; padding: 8px 15px; border-radius: 8px; 
+                            cursor: pointer; transition: 0.3s; font-size: 14px;">
+                            👎 Dislike
+                        </button>
+                    
+                        <button id="dislike-btn-comment-2" onclick="toggleDislike('comment', 2)"
+                            style="display: flex; align-items: center; gap: 5px; background: #444; 
+                            color: white; border: none; padding: 8px 15px; border-radius: 8px; 
+                            cursor: pointer; transition: 0.3s; font-size: 14px;">
+                            💬 Comment
+                        </button>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Create Post Modal -->
+    <div id="create-post-modal" class="modal">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+             <h2>Create a Post</h2>
+                <span class="close">&times;</span>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <div class="modal-profile">
+                    <img src="profile-placeholder.png" alt="Profile Picture">
+                    <span>Archer_User</span>
+                </div>
+                <textarea placeholder="What's on your mind?"></textarea>
+
+                <!-- Emoji Picker -->
+                <div class="emoji-picker">
+                    <span onclick="addEmoji('😀')">😀</span>
+                    <span onclick="addEmoji('❤️')">❤️</span>
+                    <span onclick="addEmoji('😂')">😂</span>
+                    <span onclick="addEmoji('😢')">😢</span>
+                    <span onclick="addEmoji('😡')">😡</span>
+                </div>
+
+                <!-- Post Button -->
+                <button class="post-btn">Post</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 TikTalk Archers</p>
+    </footer>
+
+    <script>
+            document.addEventListener("DOMContentLoaded", function () {
+            let createPostBtn = document.getElementById("create-post-btn");
+            let modal = document.getElementById("create-post-modal");
+            let closeBtn = document.querySelector(".close");
+
+            modal.style.display = "none";
+
+            if (createPostBtn && modal) {
+                createPostBtn.addEventListener("click", function () {
+                    modal.style.display = "flex";
+                });
+            }
+
+            if (closeBtn) {
+                closeBtn.addEventListener("click", function () {
+                    modal.style.display = "none";
+                });
+            }
+
+            window.addEventListener("click", function (event) {
+                if (event.target === modal) {
+                    modal.style.display = "none";
+                }
+            });
+        });
+
+        /* Emoji Picker Function */
+        function addEmoji(emoji) {
+            let textarea = document.querySelector(".modal-body textarea");
+            textarea.value += emoji;
+        }
+        function loadPage(page) {
+            fetch(page)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("main-content").innerHTML = data;
+                })
+                .catch(error => console.log("Error loading page:", error));
+        }
+        </script>
+
+    <footer>
+        <p>© 2025 TikTalk Archers</p>
+    </footer>
+
+    <script>
+        document.getElementById("profile-btn").addEventListener("click", function() {
+            window.location.href = "profile.html"; // Redirect to profile page
+        });
+    </script>
+</body>
+</html>

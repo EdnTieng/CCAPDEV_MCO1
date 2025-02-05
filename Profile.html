@@ -9,87 +9,43 @@
 
     <link rel="stylesheet" href="Profile.css">
     <script src="https://kit.fontawesome.com/2616052655.js" crossorigin="anonymous"></script>
-
-    <style>
-        .profile-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 20px;
-            background: #1f1f1f;
-            border-radius: 10px;
-            max-width: 800px;
-            margin: 20px auto;
-        }
-        .profile-pic {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-        }
-        .profile-info h1 {
-            margin: 0;
-            font-size: 24px;
-        }
-        .profile-info p {
-            margin: 0;
-            color: #bbb;
-        }
-        .profile-navigation {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            padding: 10px;
-            background: #222;
-            border-radius: 10px;
-            margin: 20px auto;
-            max-width: 800px;
-            flex-wrap: wrap;
-        }
-        .nav-btn {
-            padding: 10px 15px;
-            background: #444;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .nav-btn:hover {
-            background: #666;
-        }
-        .content-container {
-            margin: 20px auto;
-            max-width: 800px;
-            padding: 20px;
-            background: #1f1f1f;
-            border-radius: 10px;
-        }
-    </style>
+    <script defer src="script.js"></script>
 
 </head>
 <body>
     <header>
-        <div class="logo">L</div>
+        <div class="logo">
+            <img src="logo.jpg" alt="Logo">
+        </div>
         <div class="search-bar">
             <input type="text" placeholder="Search...">
             <button>Search</button>
         </div>
         <div class="icons">
-            <div class="icons">
-                <div class="icon">
-                    <i class="fa-solid fa-plus fa-2x"></i>
-                </div>
-                <div class="icon">
-                    <i class="fa-solid fa-user fa-2x"></i>
-                </div>
-                <div class="icon">
-                    <i class="fa-solid fa-bars fa-2x"></i>
-                </div>
-            </div>
+            <button class="icon-btn" id="create-post-btn">
+                <i class="fa-solid fa-plus fa-2x"></i>
+            </button>
+            <button class="icon-btn" id="profile-btn">
+                <i class="fa-solid fa-user fa-2x"></i>
+            </button>
+            <button class="icon-btn" id="menu-btn">
+                <i class="fa-solid fa-bars fa-2x"></i>
+            </button>
         </div>
+        
+        <div id="menu-dropdown" class="menu-dropdown">
+            <ul>
+                <li><a href="#">Settings</a></li>
+                <li><a href="#">Privacy</a></li>
+                <li><a href="#">Help & Support</a></li>
+                <li><a href="#">Log Out</a></li>
+            </ul>
+        </div> 
     </header>
     <nav>
-        <a href="Main.html">Back to Home</a>
+        <a href="Index.html">Home</a>
+        <a href="Login.html">Login</a>
+        <a href="Explore.html">Explore</a>
     </nav>
 
     <div class="container">
@@ -116,11 +72,78 @@
         </div>
     </div>
     
+    <!-- Create Post Modal -->
+<div id="create-post-modal" class="modal">
+    <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+            <h2>Create a Post</h2>
+            <span class="close">&times;</span>
+        </div>
+
+        <!-- Modal Body -->
+        <div class="modal-body">
+            <div class="modal-profile">
+                <img src="profile-placeholder.png" alt="Profile Picture">
+                <span>Archer_User</span>
+            </div>
+            <textarea placeholder="What's on your mind?"></textarea>
+
+            <!-- Emoji Picker -->
+            <div class="emoji-picker">
+                <span onclick="addEmoji('😀')">😀</span>
+                <span onclick="addEmoji('❤️')">❤️</span>
+                <span onclick="addEmoji('😂')">😂</span>
+                <span onclick="addEmoji('😢')">😢</span>
+                <span onclick="addEmoji('😡')">😡</span>
+            </div>
+
+            <!-- Post Button -->
+            <button class="post-btn">Post</button>
+        </div>
+    </div>
+</div>
+
+
     <footer>
-        <p>placeholder</p>
+        <p>© 2025 TikTalk Archers</p>
     </footer>
     
     <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let createPostBtn = document.getElementById("create-post-btn");
+            let modal = document.getElementById("create-post-modal");
+            let closeBtn = document.querySelector(".close");
+
+            modal.style.display = "none";
+
+            if (createPostBtn && modal) {
+                createPostBtn.addEventListener("click", function () {
+                    modal.style.display = "flex";
+                });
+            }
+
+            if (closeBtn) {
+                closeBtn.addEventListener("click", function () {
+                    modal.style.display = "none";
+                });
+            }
+
+            window.addEventListener("click", function (event) {
+                if (event.target === modal) {
+                    modal.style.display = "none";
+                }
+            });
+        });
+
+        /* Emoji Picker Function */
+        function addEmoji(emoji) {
+            let textarea = document.querySelector(".modal-body textarea");
+            textarea.value += emoji;
+        }
+
+
+
         function loadContent(page) {
             console.log("Loading:", page); 
     
@@ -137,6 +160,24 @@
                 })
                 .catch(error => console.error("Error loading content:", error));
         }
-    </script>    
+    </script>   
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let menuBtn = document.getElementById("menu-btn");
+            let menuDropdown = document.getElementById("menu-dropdown");
+    
+            menuBtn.addEventListener("click", function (event) {
+                event.stopPropagation();
+                menuDropdown.style.display = menuDropdown.style.display === "block" ? "none" : "block";
+            });
+    
+            document.addEventListener("click", function (event) {
+                if (!menuDropdown.contains(event.target) && event.target !== menuBtn) {
+                    menuDropdown.style.display = "none";
+                }
+            });
+        });
+    </script>
+     
 </body>
 </html>
