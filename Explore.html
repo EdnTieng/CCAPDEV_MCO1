@@ -69,6 +69,14 @@
                 <i class="fa-solid fa-bars fa-2x"></i>
             </button>
         </div>
+        <div id="menu-dropdown" class="menu-dropdown">
+            <ul>
+                <li><a href="#">Settings</a></li>
+                <li><a href="#">Privacy</a></li>
+                <li><a href="#">Help & Support</a></li>
+                <li><a href="#">Log Out</a></li>
+            </ul>
+        </div> 
     </header>
 
     <nav>
@@ -253,6 +261,22 @@
         document.getElementById("profile-btn").addEventListener("click", function() {
             window.location.href = "profile.html"; // Redirect to profile page
         });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            let menuBtn = document.getElementById("menu-btn");
+            let menuDropdown = document.getElementById("menu-dropdown");
+
+            menuBtn.addEventListener("click", function (event) {
+                event.stopPropagation(); 
+                menuDropdown.style.display = menuDropdown.style.display === "block" ? "none" : "block";
+        });
+
+        document.addEventListener("click", function (event) {
+            if (!menuDropdown.contains(event.target) && event.target !== menuBtn) {
+                menuDropdown.style.display = "none";
+            }
+        });
+    });
     </script>
 </body>
 </html>
