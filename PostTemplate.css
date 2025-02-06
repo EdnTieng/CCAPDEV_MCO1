@@ -231,7 +231,7 @@ nav a {
 }
 
 
-/* Modal Overlay - Fullscreen Blur */
+/* Modal Overlay */
 .modal {
     display: none;
     position: fixed;
@@ -405,15 +405,15 @@ footer {
 
 .comment-content {
     display: inline-block;
-    background: #333; /* Darker background for visibility */
+    background: #333;
     color: white;
     padding: 8px 12px;
-    border-radius: 15px; /* Makes it rounded */
+    border-radius: 15px;
     font-size: 14px;
     max-width: 80%;
     word-wrap: break-word;
     line-height: 1.4;
-    margin-left: 42px; /* Pushes comment text away from the icon */
+    margin-left: 42px; 
 }
 
 .comment-actions {
@@ -421,7 +421,7 @@ footer {
     gap: 10px;
     margin-top: 5px;
     font-size: 14px;
-    padding-left: 48px; /* Aligns under the comment */
+    padding-left: 48px;
 }
 
 .comment-actions button {
