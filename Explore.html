@@ -47,6 +47,16 @@
                 commentSection.style.display = "none";
             }
         }
+
+        function togglePostOptions(postId) {
+            const menu = document.getElementById(`options-menu-${postId}`);
+            menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function reportPost(postId) {
+            alert(`Reporting post ${postId}`);
+        }
+
     </script>
 </head>
 <body>
@@ -105,12 +115,18 @@
                     <div class="post-header">
                         <div class="user-icon"></div>
                         <span class="username">Explorer1</span>
+                        <div class="post-options">
+                            <button class="options-btn" onclick="togglePostOptions(1)">⋮</button>
+                            <div class="options-menu" id="options-menu-1" style="display: none;">
+                                <button onclick="reportPost(1)">Report</button>
+                            </div>
+                        </div>
                     </div>
                     <div class="post-caption">
                         <p>Check out this amazing sunset! 🌅</p>
                     </div>
                     <div class="post-content">
-                        <img src="sunset.jpg" alt="Sunset">
+                        <img src="https://hdqwalls.com/wallpapers/sunset-beach-cp.jpg" alt="Sunset">
                     </div>
                     <div class="post-actions" style="display: flex; justify-content: space-around; padding: 10px;">
                         <button id="like-btn-post-1" onclick="toggleLike('post', 1)"
@@ -127,25 +143,31 @@
                             👎 Dislike
                         </button>
                     
-                        <button id="dislike-btn-comment-1" onclick="toggleDislike('comment', 1)"
+                        <button id="dislike-btn-comment-1" onclick="toggleComments"
                             style="display: flex; align-items: center; gap: 5px; background: #444; 
                             color: white; border: none; padding: 8px 15px; border-radius: 8px; 
                             cursor: pointer; transition: 0.3s; font-size: 14px;">
                             💬 Comment
                         </button>
-                    </div>
+                   
                 </div>
 
                 <div class="post-item">
                     <div class="post-header">
                         <div class="user-icon"></div>
                         <span class="username">Explorer2</span>
+                        <div class="post-options">
+                            <button class="options-btn" onclick="togglePostOptions(2)">⋮</button>
+                            <div class="options-menu" id="options-menu-2" style="display: none;">
+                                <button onclick="reportPost(2)">Report</button>
+                            </div>
+                        </div>
                     </div>
                     <div class="post-caption">
                         <p>Delicious homemade sushi 🍣</p>
                     </div>
                     <div class="post-content">
-                        <img src="sushi.jpg" alt="Sushi">
+                        <img src="https://cdn-p300.americantowns.com/img/article/ia-sushi-restaurant-1.jpg" alt="Sushi">
                     </div>
                     <div class="post-actions" style="display: flex; justify-content: space-around; padding: 10px;">
                         <button id="like-btn-post-2" onclick="toggleLike('post', 2)"
@@ -170,6 +192,131 @@
                         </button>
                     </div>
                 </div>
+
+                <div class="post-item">
+                    <div class="post-header">
+                        <div class="user-icon"></div>
+                        <span class="username">Explorer3</span>
+                        <div class="post-options">
+                            <button class="options-btn" onclick="togglePostOptions(3)">⋮</button>
+                            <div class="options-menu" id="options-menu-3" style="display: none;">
+                                <button onclick="reportPost(3)">Report</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="post-caption">
+                        <p>A sleepy kitten curled up in a tiny bed 🐱💤</p>
+                    </div>
+                    <div class="post-content">
+                        <img src="https://wallpapercave.com/wp/hXxZ8z6.jpg" alt="kitten">
+                    </div>
+                    <div class="post-actions" style="display: flex; justify-content: space-around; padding: 10px;">
+                        <button id="like-btn-post-3" onclick="toggleLike('post', 3)"
+                            style="display: flex; align-items: center; gap: 5px; background: #444; 
+                            color: white; border: none; padding: 8px 15px; border-radius: 8px; 
+                            cursor: pointer; transition: 0.3s; font-size: 14px;">
+                            👍 Like
+                        </button>
+                    
+                        <button id="dislike-btn-post-3" onclick="toggleDislike('post', 3)"
+                            style="display: flex; align-items: center; gap: 5px; background: #444; 
+                            color: white; border: none; padding: 8px 15px; border-radius: 8px; 
+                            cursor: pointer; transition: 0.3s; font-size: 14px;">
+                            👎 Dislike
+                        </button>
+                    
+                        <button id="dislike-btn-comment-3" onclick="toggleDislike('comment', 3)"
+                            style="display: flex; align-items: center; gap: 5px; background: #444; 
+                            color: white; border: none; padding: 8px 15px; border-radius: 8px; 
+                            cursor: pointer; transition: 0.3s; font-size: 14px;">
+                            💬 Comment
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="post-item">
+                    <div class="post-header">
+                        <div class="user-icon"></div>
+                        <span class="username">Explorer4</span>
+                        <div class="post-options">
+                            <button class="options-btn" onclick="togglePostOptions(4)">⋮</button>
+                            <div class="options-menu" id="options-menu-4" style="display: none;">
+                                <button onclick="reportPost(4)">Report</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="post-caption">
+                        <p>A stunning desert with rolling dunes 🏜️</p>
+                    </div>
+                    <div class="post-content">
+                        <img src="https://www.outofchicago.com/wp-content/uploads/2021/09/Sarah-Marino-Sand-Dunes-1500px.jpg" alt="sand">
+                    </div>
+                    <div class="post-actions" style="display: flex; justify-content: space-around; padding: 10px;">
+                        <button id="like-btn-post-4" onclick="toggleLike('post', 4)"
+                            style="display: flex; align-items: center; gap: 5px; background: #444; 
+                            color: white; border: none; padding: 8px 15px; border-radius: 8px; 
+                            cursor: pointer; transition: 0.3s; font-size: 14px;">
+                            👍 Like
+                        </button>
+                    
+                        <button id="dislike-btn-post-4" onclick="toggleDislike('post', 4)"
+                            style="display: flex; align-items: center; gap: 5px; background: #444; 
+                            color: white; border: none; padding: 8px 15px; border-radius: 8px; 
+                            cursor: pointer; transition: 0.3s; font-size: 14px;">
+                            👎 Dislike
+                        </button>
+                    
+                        <button id="dislike-btn-comment-4" onclick="toggleDislike('comment', 4)"
+                            style="display: flex; align-items: center; gap: 5px; background: #444; 
+                            color: white; border: none; padding: 8px 15px; border-radius: 8px; 
+                            cursor: pointer; transition: 0.3s; font-size: 14px;">
+                            💬 Comment
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="post-item">
+                    <div class="post-header">
+                        <div class="user-icon"></div>
+                        <span class="username">Explorer5</span>
+                        <div class="post-options">
+                            <button class="options-btn" onclick="togglePostOptions(5)">⋮</button>
+                            <div class="options-menu" id="options-menu-5" style="display: none;">
+                                <button onclick="reportPost(5)">Report</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="post-caption">
+                        <p>A bustling night market in Tokyo 🌆🍜</p>
+                    </div>
+                    <div class="post-content">
+                        <img src="https://wallpaperaccess.com/full/18532.jpg" alt="tokyo">
+                    </div>
+                    <div class="post-actions" style="display: flex; justify-content: space-around; padding: 10px;">
+                        <button id="like-btn-post-5" onclick="toggleLike('post', 5)"
+                            style="display: flex; align-items: center; gap: 5px; background: #444; 
+                            color: white; border: none; padding: 8px 15px; border-radius: 8px; 
+                            cursor: pointer; transition: 0.3s; font-size: 14px;">
+                            👍 Like
+                        </button>
+                    
+                        <button id="dislike-btn-post-5" onclick="toggleDislike('post', 5)"
+                            style="display: flex; align-items: center; gap: 5px; background: #444; 
+                            color: white; border: none; padding: 8px 15px; border-radius: 8px; 
+                            cursor: pointer; transition: 0.3s; font-size: 14px;">
+                            👎 Dislike
+                        </button>
+                    
+                        <button id="dislike-btn-comment-5" onclick="toggleDislike('comment', 5)"
+                            style="display: flex; align-items: center; gap: 5px; background: #444; 
+                            color: white; border: none; padding: 8px 15px; border-radius: 8px; 
+                            cursor: pointer; transition: 0.3s; font-size: 14px;">
+                            💬 Comment
+                        </button>
+                    </div>
+                </div>
+
+
                 </div>
             </div>
         </div>

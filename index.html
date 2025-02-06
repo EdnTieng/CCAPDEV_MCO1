@@ -51,6 +51,24 @@
             }
         }
 
+        function togglePostOptions(postId) {
+            const menu = document.getElementById(`options-menu-${postId}`);
+            menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+        }
+                
+        function editPost(postId) {
+            alert(`Editing post ${postId}`);
+        }
+                
+        function deletePost(postId) {
+            alert(`Deleting post ${postId}`);
+        }
+        
+        function reportPost(postId) {
+            alert(`Reporting post ${postId}`);
+        }
+                    
+
     </script>
 </head>
 <body>
@@ -111,7 +129,14 @@
                 <div class="post-item">
                     <div class="post-header">
                         <div class="user-icon"></div>
-                        <span class="username">User1</span>
+                        <span class="username">Archer_User</span>
+                        <div class="post-options">
+                            <button class="options-btn" onclick="togglePostOptions(1)">⋮</button>
+                            <div class="options-menu" id="options-menu-1" style="display: none;">
+                                <button onclick="editPost(1)">Edit</button>
+                                <button onclick="deletePost(1)">Delete</button>
+                            </div>
+                        </div>
                     </div>
                     <div class="post-caption">
                         <p>Enjoying the weekend! </p>
@@ -142,83 +167,120 @@
                         </button>
                     </div>
                 </div>
-                    <div class="comments-section" id="comments-1" style="display: none;">
-                        <div class="add-comment">
-                            <textarea placeholder="Add a comment..."></textarea>
-                            <button>Post Comment</button>
-                        </div>
-
-                         <div class="comment-item">
-                            <div class="comment-header">
+                <div class="comments-section" id="comments-1" style="display: none;">
+                    <div class="add-comment">
+                        <textarea placeholder="Add a comment..."></textarea>
+                        <button>Post Comment</button>
+                    </div>
+                
+                    <div class="comment-item" id="comment-1">
+                        <div class="comment-header">
+                            <div class="comment-info">
                                 <div class="user-icon"></div>
-                                <span class="username">UserA</span>
+                                <span class="username">Archer_User</span>
                             </div>
-                            <div class="comment-content">Looks awesome! </div>
-                            <div class="comment-actions">
-                                <button>Like</button>
-                                <button>Unlike</button>
-                                <button>Reply</button>
+                            <button class="comment-options-btn" onclick="toggleCommentOptions(1)">⋮</button>
+                            <div class="comment-options-menu" id="comment-options-1" style="display: none;">
+                                <button onclick="editComment(1)">Edit</button>
+                                <button onclick="deleteComment(1)">Delete</button>
                             </div>
                         </div>
-
-                        <div class="comment-item">
-                            <div class="comment-header">
+                        <div class="comment-content">Hope you love my post!</div>
+                        <div class="comment-actions">
+                            <button><i class="fa-solid fa-thumbs-up"></i> Like</button>
+                            <button><i class="fa-solid fa-thumbs-down"></i> Dislike</button>
+                            <button><i class="fa-solid fa-reply"></i> Reply</button>
+                        </div>
+                    </div>
+                        
+                    <div class="comment-item" id="comment-2">
+                        <div class="comment-header">
+                            <div class="comment-info">
                                 <div class="user-icon"></div>
                                 <span class="username">UserB</span>
                             </div>
+                            <button class="comment-options-btn" onclick="toggleCommentOptions(2)">⋮</button>
+                            <div class="comment-options-menu" id="comment-options-2" style="display: none;">
+                                <button onclick="reportComment(2)">Report</button>
+                            </div>
+                        </div>
                             <div class="comment-content">Wish I was there too! </div>
                             <div class="comment-actions">
-                                <button>Like</button>
-                                <button>Unlike</button>
-                                <button>Reply</button>
+                                <button><i class="fa-solid fa-thumbs-up"></i> Like</button>
+                                <button><i class="fa-solid fa-thumbs-down"></i> Dislike</button>
+                                <button><i class="fa-solid fa-reply"></i> Reply</button>
                             </div>
                         </div>
 
-                        <div class="comment-item">
+                        <div class="comment-item" id="comment-3">
                             <div class="comment-header">
-                                <div class="user-icon"></div>
-                                <span class="username">UserC</span>
+                                <div class="comment-info">
+                                    <div class="user-icon"></div>
+                                    <span class="username">UserC</span>
+                                </div>
+                                <button class="comment-options-btn" onclick="toggleCommentOptions(3)">⋮</button>
+                            <div class="comment-options-menu" id="comment-options-3" style="display: none;">
+                                <button onclick="reportComment(3)">Report</button>
                             </div>
+                        </div>
                             <div class="comment-content">What a beautiful view! </div>
                             <div class="comment-actions">
-                                <button>Like</button>
-                                <button>Unlike</button>
-                                <button>Reply</button>
+                                <button><i class="fa-solid fa-thumbs-up"></i> Like</button>
+                                <button><i class="fa-solid fa-thumbs-down"></i> Dislike</button>
+                                <button><i class="fa-solid fa-reply"></i> Reply</button>
                             </div>
                         </div>
 
-                        <div class="comment-item">
+                        <div class="comment-item" id="comment-4">
                             <div class="comment-header">
-                                <div class="user-icon"></div>
-                                <span class="username">UserD</span>
+                                <div class="comment-info">
+                                    <div class="user-icon"></div>
+                                    <span class="username">UserD</span>
+                                </div>
+                                <button class="comment-options-btn" onclick="toggleCommentOptions(4)">⋮</button>
+                            <div class="comment-options-menu" id="comment-options-4" style="display: none;">
+                                <button onclick="reportComment(4)">Report</button>
                             </div>
+                        </div>
                             <div class="comment-content">Hope you're having fun! </div>
                             <div class="comment-actions">
-                                <button>Like</button>
-                                <button>Unlike</button>
-                                <button>Reply</button>
+                                <button><i class="fa-solid fa-thumbs-up"></i> Like</button>
+                                <button><i class="fa-solid fa-thumbs-down"></i> Dislike</button>
+                                <button><i class="fa-solid fa-reply"></i> Reply</button>
                             </div>
                         </div>
 
-                        <div class="comment-item">
+                        <div class="comment-item" id="comment-5">
                             <div class="comment-header">
-                                <div class="user-icon"></div>
-                                <span class="username">UserE</span>
+                                <div class="comment-info">
+                                    <div class="user-icon"></div>
+                                    <span class="username">UserE</span>
+                                </div>
+                                <button class="comment-options-btn" onclick="toggleCommentOptions(5)">⋮</button>
+                            <div class="comment-options-menu" id="comment-options-5" style="display: none;">
+                                <button onclick="reportComment(5)">Report</button>
                             </div>
+                        </div>
                             <div class="comment-content">Amazing shot! </div>
                             <div class="comment-actions">
-                                <button>Like</button>
-                                <button>Unlike</button>
-                                <button>Reply</button>
+                                <button><i class="fa-solid fa-thumbs-up"></i> Like</button>
+                                <button><i class="fa-solid fa-thumbs-down"></i> Dislike</button>
+                                <button><i class="fa-solid fa-reply"></i> Reply</button>
                             </div>
                         </div> 
-                    </div>
+                     </div>
                 
 
                 <div class="post-item">
                     <div class="post-header">
                         <div class="user-icon"></div>
                         <span class="username">User2</span>
+                        <div class="post-options">
+                            <button class="options-btn" onclick="togglePostOptions(2)">⋮</button>
+                            <div class="options-menu" id="options-menu-2" style="display: none;">
+                                <button onclick="reportPost(2)">Report</button>
+                            </div>
+                        </div>
                     </div>
                     <div class="post-caption">
                         <p>Had a great time at the concert! </p>
@@ -254,70 +316,101 @@
                             <button>Post Comment</button>
                         </div>
 
-                         <div class="comment-item">
+                        <div class="comment-item" id="comment-6">
                             <div class="comment-header">
-                                <div class="user-icon"></div>
-                                <span class="username">UserA</span>
+                                <div class="comment-info">
+                                    <div class="user-icon"></div>
+                                    <span class="username">Archer_User</span>
+                                </div>
+                                <button class="comment-options-btn" onclick="toggleCommentOptions(6)">⋮</button>
+                                <div class="comment-options-menu" id="comment-options-6" style="display: none;">
+                                    <button onclick="editComment(6)">Edit</button>
+                                    <button onclick="deleteComment(6)">Delete</button>
+                                </div>
                             </div>
-                            <div class="comment-content"> WOW!</div>
-                            <div class="comment-actions">
-                                <button>Like</button>
-                                <button>Unlike</button>
-                                <button>Reply</button>
+                                <div class="comment-content">wow! </div>
+                                <div class="comment-actions">
+                                    <button><i class="fa-solid fa-thumbs-up"></i> Like</button>
+                                    <button><i class="fa-solid fa-thumbs-down"></i> Dislike</button>
+                                    <button><i class="fa-solid fa-reply"></i> Reply</button>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="comment-item">
-                            <div class="comment-header">
-                                <div class="user-icon"></div>
-                                <span class="username">UserB</span>
-                            </div>
-                            <div class="comment-content">Wish I was there too! </div>
-                            <div class="comment-actions">
-                                <button>Like</button>
-                                <button>Unlike</button>
-                                <button>Reply</button>
-                            </div>
-                        </div>
+                            <div class="comment-item" id="comment-7">
+                                <div class="comment-header">
+                                    <div class="comment-info">
+                                        <div class="user-icon"></div>
+                                        <span class="username">UserB</span>
+                                    </div>
+                                    <button class="comment-options-btn" onclick="toggleCommentOptions(7)">⋮</button>
+                                    <div class="comment-options-menu" id="comment-options-7" style="display: none;">
+                                        <button onclick="reportComment(7)">Report</button>
+                                    </div>
+                                </div>
+                                    <div class="comment-content">MY MOTHER IS MOTHERINGGGG </div>
+                                    <div class="comment-actions">
+                                        <button><i class="fa-solid fa-thumbs-up"></i> Like</button>
+                                        <button><i class="fa-solid fa-thumbs-down"></i> Dislike</button>
+                                        <button><i class="fa-solid fa-reply"></i> Reply</button>
+                                    </div>
+                                </div>
 
-                        <div class="comment-item">
-                            <div class="comment-header">
-                                <div class="user-icon"></div>
-                                <span class="username">UserC</span>
-                            </div>
-                            <div class="comment-content"> My favorite! </div>
-                            <div class="comment-actions">
-                                <button>Like</button>
-                                <button>Unlike</button>
-                                <button>Reply</button>
-                            </div>
-                        </div>
+                                <div class="comment-item" id="comment-8">
+                                    <div class="comment-header">
+                                        <div class="comment-info">
+                                            <div class="user-icon"></div>
+                                            <span class="username">UserC</span>
+                                        </div>
+                                        <button class="comment-options-btn" onclick="toggleCommentOptions(8)">⋮</button>
+                                        <div class="comment-options-menu" id="comment-options-8" style="display: none;">
+                                            <button onclick="reportComment(8)">Report</button>
+                                        </div>
+                                    </div>
+                                        <div class="comment-content">Too bad i cant afford the tickets huhu </div>
+                                        <div class="comment-actions">
+                                            <button><i class="fa-solid fa-thumbs-up"></i> Like</button>
+                                            <button><i class="fa-solid fa-thumbs-down"></i> Dislike</button>
+                                            <button><i class="fa-solid fa-reply"></i> Reply</button>
+                                        </div>
+                                    </div>
 
-                        <div class="comment-item">
-                            <div class="comment-header">
-                                <div class="user-icon"></div>
-                                <span class="username">UserD</span>
-                            </div>
-                            <div class="comment-content"> Taylor Swift!</div>
-                            <div class="comment-actions">
-                                <button>Like</button>
-                                <button>Unlike</button>
-                                <button>Reply</button>
-                            </div>
-                        </div>
+                                    <div class="comment-item" id="comment-9">
+                                        <div class="comment-header">
+                                            <div class="comment-info">
+                                                <div class="user-icon"></div>
+                                                <span class="username">UserD</span>
+                                            </div>
+                                            <button class="comment-options-btn" onclick="toggleCommentOptions(9)">⋮</button>
+                                            <div class="comment-options-menu" id="comment-options-9" style="display: none;">
+                                                <button onclick="reportComment(9)">Report</button>
+                                            </div>
+                                        </div>
+                                            <div class="comment-content">OMG I WAS THEREEE </div>
+                                            <div class="comment-actions">
+                                                <button><i class="fa-solid fa-thumbs-up"></i> Like</button>
+                                                <button><i class="fa-solid fa-thumbs-down"></i> Dislike</button>
+                                                <button><i class="fa-solid fa-reply"></i> Reply</button>
+                                            </div>
+                                        </div>
 
-                        <div class="comment-item">
-                            <div class="comment-header">
-                                <div class="user-icon"></div>
-                                <span class="username">UserE</span>
-                            </div>
-                            <div class="comment-content"> OMG!</div>
-                            <div class="comment-actions">
-                                <button>Like</button>
-                                <button>Unlike</button>
-                                <button>Reply</button>
-                            </div>
-                        </div>
+                                        <div class="comment-item" id="comment-10">
+                                            <div class="comment-header">
+                                                <div class="comment-info">
+                                                    <div class="user-icon"></div>
+                                                    <span class="username">UserE</span>
+                                                </div>
+                                                <button class="comment-options-btn" onclick="toggleCommentOptions(10)">⋮</button>
+                                                <div class="comment-options-menu" id="comment-options-10" style="display: none;">
+                                                    <button onclick="reportComment(10)">Report</button>
+                                                </div>
+                                            </div>
+                                                <div class="comment-content">I LOVE U TAYLOR!!! </div>
+                                                <div class="comment-actions">
+                                                    <button><i class="fa-solid fa-thumbs-up"></i> Like</button>
+                                                    <button><i class="fa-solid fa-thumbs-down"></i> Dislike</button>
+                                                    <button><i class="fa-solid fa-reply"></i> Reply</button>
+                                                </div>
+                                            </div>
                     </div>
                 </div>
 
@@ -325,6 +418,12 @@
                     <div class="post-header">
                         <div class="user-icon"></div>
                         <span class="username">User3</span>
+                        <div class="post-options">
+                            <button class="options-btn" onclick="togglePostOptions(3)">⋮</button>
+                            <div class="options-menu" id="options-menu-3" style="display: none;">
+                                <button onclick="reportPost(3)">Report</button>
+                            </div>
+                        </div>
                     </div>
                     <div class="post-caption">
                         <p>Check out my latest artwork! 🎨</p>
@@ -360,68 +459,99 @@
                             <button>Post Comment</button>
                         </div>
 
-                         <div class="comment-item">
+                        <div class="comment-item" id="comment-11">
                             <div class="comment-header">
-                                <div class="user-icon"></div>
-                                <span class="username">UserA</span>
+                                <div class="comment-info">
+                                    <div class="user-icon"></div>
+                                    <span class="username">Archer_User</span>
+                                </div>
+                                <button class="comment-options-btn" onclick="toggleCommentOptions(11)">⋮</button>
+                                <div class="comment-options-menu" id="comment-options-11" style="display: none;">
+                                    <button onclick="editComment(11)">Edit</button>
+                                    <button onclick="deleteComment(11)">Delete</button>
+                                </div>
                             </div>
                             <div class="comment-content"> What an artist!</div>
                             <div class="comment-actions">
-                                <button>Like</button>
-                                <button>Unlike</button>
-                                <button>Reply</button>
+                                <button><i class="fa-solid fa-thumbs-up"></i> Like</button>
+                                <button><i class="fa-solid fa-thumbs-down"></i> Dislike</button>
+                                <button><i class="fa-solid fa-reply"></i> Reply</button>
                             </div>
                         </div>
 
-                        <div class="comment-item">
+                        <div class="comment-item" id="comment-12">
                             <div class="comment-header">
-                                <div class="user-icon"></div>
-                                <span class="username">UserB</span>
+                                <div class="comment-info">
+                                    <div class="user-icon"></div>
+                                    <span class="username">UserB</span>
+                                </div>
+                                <button class="comment-options-btn" onclick="toggleCommentOptions(12)">⋮</button>
+                                <div class="comment-options-menu" id="comment-options-12" style="display: none;">
+                                    <button onclick="reportComment(12)">Report</button>
+                                </div>
                             </div>
                             <div class="comment-content"> You're going places! </div>
                             <div class="comment-actions">
-                                <button>Like</button>
-                                <button>Unlike</button>
-                                <button>Reply</button>
+                                <button><i class="fa-solid fa-thumbs-up"></i> Like</button>
+                                <button><i class="fa-solid fa-thumbs-down"></i> Dislike</button>
+                                <button><i class="fa-solid fa-reply"></i> Reply</button>
                             </div>
                         </div>
 
-                        <div class="comment-item">
+                        <div class="comment-item" id="comment-13">
                             <div class="comment-header">
-                                <div class="user-icon"></div>
-                                <span class="username">UserC</span>
+                                <div class="comment-info">
+                                    <div class="user-icon"></div>
+                                    <span class="username">UserC</span>
+                                </div>
+                                <button class="comment-options-btn" onclick="toggleCommentOptions(13)">⋮</button>
+                                <div class="comment-options-menu" id="comment-options-13" style="display: none;">
+                                    <button onclick="reportComment(13)">Report</button>
+                                </div>
                             </div>
                             <div class="comment-content"> Amazing!</div>
                             <div class="comment-actions">
-                                <button>Like</button>
-                                <button>Unlike</button>
-                                <button>Reply</button>
+                                <button><i class="fa-solid fa-thumbs-up"></i> Like</button>
+                                <button><i class="fa-solid fa-thumbs-down"></i> Dislike</button>
+                                <button><i class="fa-solid fa-reply"></i> Reply</button>
                             </div>
                         </div>
 
-                        <div class="comment-item">
+                        <div class="comment-item" id="comment-14">
                             <div class="comment-header">
-                                <div class="user-icon"></div>
-                                <span class="username">UserD</span>
+                                <div class="comment-info">
+                                    <div class="user-icon"></div>
+                                    <span class="username">UserD</span>
+                                </div>
+                                <button class="comment-options-btn" onclick="toggleCommentOptions(14)">⋮</button>
+                                <div class="comment-options-menu" id="comment-options-14" style="display: none;">
+                                    <button onclick="reportComment(14)">Report</button>
+                                </div>
                             </div>
                             <div class="comment-content"> Beautiful work! </div>
                             <div class="comment-actions">
-                                <button>Like</button>
-                                <button>Unlike</button>
-                                <button>Reply</button>
+                                <button><i class="fa-solid fa-thumbs-up"></i> Like</button>
+                                <button><i class="fa-solid fa-thumbs-down"></i> Dislike</button>
+                                <button><i class="fa-solid fa-reply"></i> Reply</button>
                             </div>
                         </div>
 
-                        <div class="comment-item">
+                        <div class="comment-item" id="comment-15">
                             <div class="comment-header">
-                                <div class="user-icon"></div>
-                                <span class="username">UserE</span>
+                                <div class="comment-info">
+                                    <div class="user-icon"></div>
+                                    <span class="username">UserE</span>
+                                </div>
+                                <button class="comment-options-btn" onclick="toggleCommentOptions(15)">⋮</button>
+                                <div class="comment-options-menu" id="comment-options-15" style="display: none;">
+                                    <button onclick="reportComment(15)">Report</button>
+                                </div>
                             </div>
                             <div class="comment-content"> Sold! </div>
                             <div class="comment-actions">
-                                <button>Like</button>
-                                <button>Unlike</button>
-                                <button>Reply</button>
+                                <button><i class="fa-solid fa-thumbs-up"></i> Like</button>
+                                <button><i class="fa-solid fa-thumbs-down"></i> Dislike</button>
+                                <button><i class="fa-solid fa-reply"></i> Reply</button>
                             </div>
                         </div>
                     </div>
@@ -431,6 +561,12 @@
                     <div class="post-header">
                         <div class="user-icon"></div>
                         <span class="username">User4</span>
+                        <div class="post-options">
+                            <button class="options-btn" onclick="togglePostOptions(4)">⋮</button>
+                            <div class="options-menu" id="options-menu-4" style="display: none;">
+                                <button onclick="reportPost(4)">Report</button>
+                            </div>
+                        </div>
                     </div>
                     <div class="post-caption">
                         <p> Had fun going out today! </p>
@@ -465,78 +601,115 @@
                             <textarea placeholder="Add a comment..."></textarea>
                             <button>Post Comment</button>
                         </div>
-
-                         <div class="comment-item">
+                
+                        <div class="comment-item" id="comment-16">
                             <div class="comment-header">
+                            <div class="comment-info">
                                 <div class="user-icon"></div>
-                                <span class="username">UserA</span>
+                                <span class="username">Archer_User</span>
                             </div>
-                            <div class="comment-content"> Where is that? </div>
-                            <div class="comment-actions">
-                                <button>Like</button>
-                                <button>Unlike</button>
-                                <button>Reply</button>
+                            <button class="comment-options-btn" onclick="toggleCommentOptions(16)">⋮</button>
+                            <div class="comment-options-menu" id="comment-options-16" style="display: none;">
+                                <button onclick="editComment(16)">Edit</button>
+                                <button onclick="deleteComment(16)">Delete</button>
                             </div>
                         </div>
-
-                        <div class="comment-item">
+                            <div class="comment-content"> Where is that? </div>
+                            <div class="comment-actions">
+                                <button><i class="fa-solid fa-thumbs-up"></i> Like</button>
+                                <button><i class="fa-solid fa-thumbs-down"></i> Dislike</button>
+                                <button><i class="fa-solid fa-reply"></i> Reply</button>
+                            </div>
+                        </div>
+                
+                        <div class="comment-item" id="comment-17">
                             <div class="comment-header">
-                                <div class="user-icon"></div>
-                                <span class="username">UserB</span>
+                                <div class="comment-info">
+                                    <div class="user-icon"></div>
+                                    <span class="username">UserB</span>
+                                </div>
+                                <button class="comment-options-btn" onclick="toggleCommentOptions(17)">⋮</button>
+                                <div class="comment-options-menu" id="comment-options-17" style="display: none;">
+                                    <button onclick="reportComment(17)">Report</button>
+                                </div>
                             </div>
                             <div class="comment-content"> On My Way! </div>
                             <div class="comment-actions">
-                                <button>Like</button>
-                                <button>Unlike</button>
-                                <button>Reply</button>
+                                <button><i class="fa-solid fa-thumbs-up"></i> Like</button>
+                                <button><i class="fa-solid fa-thumbs-down"></i> Dislike</button>
+                                <button><i class="fa-solid fa-reply"></i> Reply</button>
                             </div>
                         </div>
-
-                        <div class="comment-item">
+                
+                        <div class="comment-item" id="comment-18">
                             <div class="comment-header">
-                                <div class="user-icon"></div>
-                                <span class="username">UserC</span>
+                                <div class="comment-info">
+                                    <div class="user-icon"></div>
+                                    <span class="username">UserC</span>
+                                </div>
+                                <button class="comment-options-btn" onclick="toggleCommentOptions(18)">⋮</button>
+                                <div class="comment-options-menu" id="comment-options-18" style="display: none;">
+                                    <button onclick="reportComment(18)">Report</button>
+                                </div>
                             </div>
                             <div class="comment-content"> Roller Coaster! </div>
                             <div class="comment-actions">
-                                <button>Like</button>
-                                <button>Unlike</button>
-                                <button>Reply</button>
+                                <button><i class="fa-solid fa-thumbs-up"></i> Like</button>
+                                <button><i class="fa-solid fa-thumbs-down"></i> Dislike</button>
+                                <button><i class="fa-solid fa-reply"></i> Reply</button>
                             </div>
                         </div>
-
-                        <div class="comment-item">
+                
+                        <div class="comment-item" id="comment-19">
                             <div class="comment-header">
-                                <div class="user-icon"></div>
-                                <span class="username">UserD</span>
+                                <div class="comment-info">
+                                    <div class="user-icon"></div>
+                                    <span class="username">UserD</span>
+                                </div>
+                                <button class="comment-options-btn" onclick="toggleCommentOptions(19)">⋮</button>
+                                <div class="comment-options-menu" id="comment-options-19" style="display: none;">
+                                    <button onclick="reportComment(19)">Report</button>
+                                </div>
                             </div>
                             <div class="comment-content">Have fun!! </div>
                             <div class="comment-actions">
-                                <button>Like</button>
-                                <button>Unlike</button>
-                                <button>Reply</button>
+                                <<button><i class="fa-solid fa-thumbs-up"></i> Like</button>
+                                <button><i class="fa-solid fa-thumbs-down"></i> Dislike</button>
+                                <button><i class="fa-solid fa-reply"></i> Reply</button>
                             </div>
                         </div>
-
-                        <div class="comment-item">
+                
+                        <div class="comment-item" id="comment-20">
                             <div class="comment-header">
-                                <div class="user-icon"></div>
-                                <span class="username">UserE</span>
+                                <div class="comment-info">
+                                    <div class="user-icon"></div>
+                                    <span class="username">UserE</span>
+                                </div>
+                                <button class="comment-options-btn" onclick="toggleCommentOptions(20)">⋮</button>
+                                <div class="comment-options-menu" id="comment-options-20" style="display: none;">
+                                    <button onclick="reportComment(20)">Report</button>
+                                </div>
                             </div>
                             <div class="comment-content"> Can I Join? </div>
                             <div class="comment-actions">
-                                <button>Like</button>
-                                <button>Unlike</button>
-                                <button>Reply</button>
+                                <button><i class="fa-solid fa-thumbs-up"></i> Like</button>
+                                <button><i class="fa-solid fa-thumbs-down"></i> Dislike</button>
+                                <button><i class="fa-solid fa-reply"></i> Reply</button>
                             </div>
                         </div>
                     </div>
                 </div>
-
+                
                 <div class="post-item">
                     <div class="post-header">
                         <div class="user-icon"></div>
                         <span class="username">User5</span>
+                        <div class="post-options">
+                            <button class="options-btn" onclick="togglePostOptions(5)">⋮</button>
+                            <div class="options-menu" id="options-menu-5" style="display: none;">
+                                <button onclick="reportPost(5)">Report</button>
+                            </div>
+                        </div>
                     </div>
                     <div class="post-caption">
                         <p>Love this new recipe! </p>
@@ -572,68 +745,99 @@
                             <button>Post Comment</button>
                         </div>
 
-                         <div class="comment-item">
+                        <div class="comment-item" id="comment-21">
                             <div class="comment-header">
-                                <div class="user-icon"></div>
-                                <span class="username">UserA</span>
+                                <div class="comment-info">
+                                    <div class="user-icon"></div>
+                                    <span class="username">Archer_User</span>
+                                </div>
+                                <button class="comment-options-btn" onclick="toggleCommentOptions(21)">⋮</button>
+                                <div class="comment-options-menu" id="comment-options-21" style="display: none;">
+                                    <button onclick="editComment(21)">Edit</button>
+                                    <button onclick="deleteComment(21)">Delete</button>
+                                </div>
                             </div>
                             <div class="comment-content">Looks Yummy!</div>
                             <div class="comment-actions">
-                                <button>Like</button>
-                                <button>Unlike</button>
-                                <button>Reply</button>
+                                <button><i class="fa-solid fa-thumbs-up"></i> Like</button>
+                                <button><i class="fa-solid fa-thumbs-down"></i> Dislike</button>
+                                <button><i class="fa-solid fa-reply"></i> Reply</button>
                             </div>
                         </div>
 
-                        <div class="comment-item">
+                        <div class="comment-item" id="comment-22">
                             <div class="comment-header">
-                                <div class="user-icon"></div>
-                                <span class="username">UserB</span>
+                                <div class="comment-info">
+                                    <div class="user-icon"></div>
+                                    <span class="username">UserB</span>
+                                </div>
+                                <button class="comment-options-btn" onclick="toggleCommentOptions(22)">⋮</button>
+                                <div class="comment-options-menu" id="comment-options-22" style="display: none;">
+                                    <button onclick="reportComment(22)">Report</button>
+                                </div>
                             </div>
                             <div class="comment-content"> can I have some? </div>
                             <div class="comment-actions">
-                                <button>Like</button>
-                                <button>Unlike</button>
-                                <button>Reply</button>
+                                <button><i class="fa-solid fa-thumbs-up"></i> Like</button>
+                                <button><i class="fa-solid fa-thumbs-down"></i> Dislike</button>
+                                <button><i class="fa-solid fa-reply"></i> Reply</button>
                             </div>
                         </div>
 
-                        <div class="comment-item">
+                        <div class="comment-item" id="comment-23">
                             <div class="comment-header">
-                                <div class="user-icon"></div>
-                                <span class="username">UserC</span>
+                                <div class="comment-info">
+                                    <div class="user-icon"></div>
+                                    <span class="username">UserC</span>
+                                </div>
+                                <button class="comment-options-btn" onclick="toggleCommentOptions(23)">⋮</button>
+                                <div class="comment-options-menu" id="comment-options-23" style="display: none;">
+                                    <button onclick="reportComment(23)">Report</button>
+                                </div>
                             </div>
-                            <div class="comment-content"> Looks Expensive! </div>
+                            <div class="comment-content"> What's the secret ingredient? </div>
                             <div class="comment-actions">
-                                <button>Like</button>
-                                <button>Unlike</button>
-                                <button>Reply</button>
+                                <button><i class="fa-solid fa-thumbs-up"></i> Like</button>
+                                <button><i class="fa-solid fa-thumbs-down"></i> Dislike</button>
+                                <button><i class="fa-solid fa-reply"></i> Reply</button>
                             </div>
                         </div>
 
-                        <div class="comment-item">
+                        <div class="comment-item" id="comment-24">
                             <div class="comment-header">
-                                <div class="user-icon"></div>
-                                <span class="username">UserD</span>
+                                <div class="comment-info">
+                                    <div class="user-icon"></div>
+                                    <span class="username">UserD</span>
+                                </div>
+                                <button class="comment-options-btn" onclick="toggleCommentOptions(24)">⋮</button>
+                                <div class="comment-options-menu" id="comment-options-24" style="display: none;">
+                                    <button onclick="reportComment(24)">Report</button>
+                                </div>
                             </div>
                             <div class="comment-content"> One To Go Please ! </div>
                             <div class="comment-actions">
-                                <button>Like</button>
-                                <button>Unlike</button>
-                                <button>Reply</button>
+                                <button><i class="fa-solid fa-thumbs-up"></i> Like</button>
+                                <button><i class="fa-solid fa-thumbs-down"></i> Dislike</button>
+                                <button><i class="fa-solid fa-reply"></i> Reply</button>
                             </div>
                         </div>
 
-                        <div class="comment-item">
+                        <div class="comment-item" id="comment-25">
                             <div class="comment-header">
-                                <div class="user-icon"></div>
-                                <span class="username">UserE</span>
+                                <div class="comment-info">
+                                    <div class="user-icon"></div>
+                                    <span class="username">UserE</span>
+                                </div>
+                                <button class="comment-options-btn" onclick="toggleCommentOptions(25)">⋮</button>
+                                <div class="comment-options-menu" id="comment-options-25" style="display: none;">
+                                    <button onclick="reportComment(25)">Report</button>
+                                </div>
                             </div>
                             <div class="comment-content"> Yummy food! </div>
                             <div class="comment-actions">
-                                <button>Like</button>
-                                <button>Unlike</button>
-                                <button>Reply</button>
+                                <button><i class="fa-solid fa-thumbs-up"></i> Like</button>
+                                <button><i class="fa-solid fa-thumbs-down"></i> Dislike</button>
+                                <button><i class="fa-solid fa-reply"></i> Reply</button>
                             </div>
                         </div>
                     </div>
@@ -713,6 +917,30 @@
                 })
                 .catch(error => console.log("Error loading page:", error));
         }
+
+        function toggleCommentOptions(commentId) {
+            let menu = document.getElementById(`comment-options-${commentId}`);
+    
+            document.querySelectorAll('.comment-options-menu').forEach((menu) => {
+                menu.style.display = "none";
+            });
+
+            if (menu) {
+                menu.style.display = menu.style.display === "none" ? "block" : "none";
+            }
+        }
+        
+        function editComment(commentId) {
+            alert(`Editing comment ${commentId}`);
+        }
+        
+        function deleteComment(commentId) {
+            alert(`Deleting comment ${commentId}`);
+        }
+        
+        function reportComment(commentId) {
+            alert(`Reporting comment ${commentId}`);
+        }
         </script>
 
     <footer>
@@ -738,6 +966,7 @@
                 menuDropdown.style.display = "none";
             }
         });
+
     });
     </script>
 </body>
