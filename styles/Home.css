@@ -1,7 +1,7 @@
 
 html, body {
     width: 100%;
-    overflow-x: hidden; /* Completely disables horizontal scrolling */
+    overflow-x: hidden; 
 }
 
 
@@ -11,16 +11,16 @@ html, body {
     background-position: center; 
     background-repeat: no-repeat; 
     width: 100vw;  
-    min-height: 50vh; /* Allows flexibility if content grows */
+    min-height: 50vh;
 }
 
 .container {
     width: 100vw;  
-    height: 90vh; /* Fixed height based on viewport height */
-    overflow-y: auto; /* Enables vertical scrolling */
-    overflow-x: hidden; /* Prevents horizontal scrolling */
-    padding: 10px; /* Adds spacing inside */
-    box-sizing: border-box; /* Prevents content from overflowing */
+    height: 90vh; 
+    overflow-y: auto;
+    overflow-x: hidden; 
+    padding: 10px; 
+    box-sizing: border-box; 
 }
 
 h1 {
