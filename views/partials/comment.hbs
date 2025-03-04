@@ -1,0 +1,18 @@
+<div class="comment-item" id="comment-{{id}}">
+    <div class="comment-header">
+        <div class="comment-info">
+            <div class="user-icon"></div>
+            <span class="username">{{username}}</span>
+        </div>
+        <button class="comment-options-btn" onclick="toggleCommentOptions({{id}})">⋮</button>
+        <div class="comment-options-menu" id="comment-options-{{id}}" style="display: none;">
+            <button onclick="reportComment({{id}})">Report</button>
+        </div>
+    </div>
+    <div class="comment-content">{{content}}</div>
+    <div class="comment-actions">
+        <button><i class="fa-solid fa-thumbs-up"></i> Like</button>
+        <button><i class="fa-solid fa-thumbs-down"></i> Dislike</button>
+        <button><i class="fa-solid fa-reply"></i> Reply</button>
+    </div>
+</div>

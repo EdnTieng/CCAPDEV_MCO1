@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CCAPDEV</title>
+    <link rel="stylesheet" href="styles/PageTemplate.css">
+    <link rel="stylesheet" href="styles/Home.css">
+    <script src="https://kit.fontawesome.com/2616052655.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="styles/logo.jpg" alt="Logo">
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search...">
+            <button>Search</button>
+        </div>
+        <div class="icons">
+            <button class="icon-btn" id="create-post-btn">
+                <i class="fa-solid fa-plus fa-2x"></i>
+            </button>
+            <button class="icon-btn" id="profile-btn">
+                <i class="fa-solid fa-user fa-2x"></i>
+            </button>
+            <button class="icon-btn" id="menu-btn">
+                <i class="fa-solid fa-bars fa-2x"></i>
+            </button>
+        </div>
+        
+        <div id="menu-dropdown" class="menu-dropdown">
+            <ul>
+                <li><a href="#">Settings</a></li>
+                <li><a href="#">Privacy</a></li>
+                <li><a href="#">Help & Support</a></li>
+                <li><a href="#">Log Out</a></li>
+            </ul>
+        </div>        
+    </header>
+
+    <div id="explore-content"></div>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/login">Login</a>
+        <a href="/explore">Explore</a>
+    </nav>
+    
+    <main>
+        {{{body}}}  <!-- This is where Handlebars inserts page content -->
+    </main>
+
+    <footer>
+        <p>© 2025 TikTalk Archers</p>
+    </footer>
+</body>
+</html>
