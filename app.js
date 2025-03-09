@@ -181,6 +181,38 @@ server.get('/logout', (req, res) => {
     });
 });
 
+server.get('/settings', (req, res) => {
+    if (!req.session.userId) {
+        return res.redirect('/login');
+    }
+    res.render('settings');
+});
+
+server.post('/settings', async (req, res) => {
+    const { newUsername } = req.body;
+
+    try {
+        const existingUser = await User.findOne({ username: newUsername });
+        if (existingUser) {
+            return res.status(400).send("⚠ Username already exists!");
+        }
+
+        const user = await User.findById(req.session.userId);
+        if (!user) {
+            return res.status(400).send("❌ User not found!");
+        }
+
+        user.username = newUsername;
+        user.userTag = `u/${newUsername}`;
+        await user.save();
+
+        res.redirect('/profile');
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("Internal Server Error");
+    }
+});
+
 server.post('/create-post', async (req, res) => {
     if (!req.session.userId) {
         return res.redirect('/login');
