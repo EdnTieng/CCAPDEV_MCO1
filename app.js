@@ -31,7 +31,6 @@ server.engine('hbs', engine({
 server.set('view engine', 'hbs');
 server.set('views', path.join(__dirname, 'views'));  
 
-
 // Serve Static Files
 server.use(express.static(path.join(__dirname, 'public')));
 
@@ -172,7 +171,12 @@ server.get('/profile/dislikes', (req, res) => {
 });
 
 server.get('/logout', (req, res) => {
-    req.session.destroy(() => {
+    console.log('Logout route hit'); // Debugging log
+    req.session.destroy((err) => {
+        if (err) {
+            console.error('Error destroying session:', err); // Debugging log
+            return res.status(500).send("Internal Server Error");
+        }
         res.redirect('/login');
     });
 });
