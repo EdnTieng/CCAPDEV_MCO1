@@ -181,11 +181,25 @@ server.get('/logout', (req, res) => {
     });
 });
 
-server.get('/settings', (req, res) => {
+server.get('/settings', async (req, res) => {
     if (!req.session.userId) {
+        console.log('User not logged in, redirecting to login');
         return res.redirect('/login');
     }
-    res.render('settings');
+
+    try {
+        const user = await User.findById(req.session.userId);
+        if (!user) {
+            console.log('User not found, redirecting to login');
+            return res.redirect('/login');
+        }
+
+        console.log('Current Username:', user.username); // Debugging log
+        res.render('settings', { currentUsername: user.username });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("Internal Server Error");
+    }
 });
 
 server.post('/settings', async (req, res) => {
